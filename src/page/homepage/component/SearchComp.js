@@ -1,10 +1,18 @@
-import React, {createContext, useState} from "react";
+import React, {useState} from "react";
 
 const SearchComp = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
-        window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`;
+
+        if (searchQuery.startsWith('www.') || searchQuery.startsWith('http:')) {
+            let validateUrl = searchQuery.replace(/^http:/, 'https').replace(/^www\./, 'https://www.');
+            setSearchQuery(validateUrl);
+            window.location.replace(validateUrl);
+        } else {
+            window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`;
+        }
+
     }
 
     return (
