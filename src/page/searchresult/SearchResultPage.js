@@ -45,28 +45,32 @@ const SearchResultPage = () => {
                     {/* Display search results */}
                     {error && <p className="text-red-500">{error}</p>}
                     <ul>
-                        {data.map((item, index) => (
-                            <li key={index} className="py-4">
-                                <div className="max-w-md">
-                                    <div className="cursor-pointer mx-auto" onClick={() => {
-                                        window.location.href = item.link
-                                    }}>
-                                        <div className="flex items-center mb-2">
-                                            <img src={item.icon} alt={item.title}
-                                                 className="w-6 h-6 rounded-full shadow-md"/>
-                                            <div className="mx-4">
-                                                <p className="text-xs">{new URL(item.link).hostname}</p>
-                                                <p className="text-xs">{new URL(item.link).origin}</p>
+                        {data.map((item, index) => {
+                            const domain = new URL(item.link)
+                            const modifiedLink = domain.toString().replace(domain.origin, '').replace(/\//g, ' > ');
+                            return (
+                                <li key={index} className="py-4">
+                                    <div className="max-w-md">
+                                        <div className="cursor-pointer mx-auto" onClick={() => {
+                                            window.location.href = item.link
+                                        }}>
+                                            <div className="flex items-center mb-2">
+                                                <img src={item.icon} alt={item.title}
+                                                     className="w-6 h-6 rounded-full shadow-md"/>
+                                                <div className="mx-4">
+                                                    <p className="text-xs">{domain.hostname}</p>
+                                                    <p className="text-xs">{domain.origin}{modifiedLink}
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <a href={item.link} className="text-blue-600">{item.title}</a>
-                                        {/*<a href={item.link} className="block text-sm text-green-600 hover:underline">{item.link}</a>*/}
+                                            <a href={item.link} className="text-blue-600">{item.title}</a>
+                                        </div>
+                                        <p className="text-gray-700 text-xs">{item.description}</p>
                                     </div>
-                                    <p className="text-gray-700 text-xs">{item.description}</p>
-                                </div>
-                            </li>
-                        ))}
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
             </main>

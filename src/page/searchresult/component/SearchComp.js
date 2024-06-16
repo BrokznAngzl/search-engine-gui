@@ -13,7 +13,7 @@ const SearchComp = ({queryInput}) => {
 
     return (
         <section
-            className="search-input-section bg-white border border-gray-200 shadow-md rounded-full flex items-center h-10 w-70">
+            className="search-input-section bg-white border border-gray-200 shadow-md rounded-full flex items-center h-10 w-full max-w-md">
             <form onSubmit={hanndleSubmit}
                   className="flex items-center w-full">
 
@@ -22,40 +22,21 @@ const SearchComp = ({queryInput}) => {
                     placeholder=""
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    className="focus:outline-none mx-6 text-sm"
+                    className="focus:outline-none mx-6 text-sm w-9/12"
                 />
                 <img
                     src="https://media.geeksforgeeks.org/wp-content/uploads/20240226181310/mic.png"
                     alt="Google Mic"
-                    className="w-3 ml-28"
+                    className="w-3 ml-28 cursor-pointer"
                 />
                 <img
                     src="https://media.geeksforgeeks.org/wp-content/uploads/20240226181137/zoom-lens.png"
                     alt="Search Icon"
-                    className="w-3 mx-2 mr-4"
+                    className="w-3 mx-2 mr-4 cursor-pointer"
+                    onClick={hanndleSubmit}
                 />
             </form>
         </section>
-        // <div className="flex items-center space-x-4">
-        //     <form onSubmit={hanndleSubmit}>
-        //         <input type="text" className="border border-gray-300 rounded-full px-4 py-2 w-96 mr-2.5 outline-none"
-        //                placeholder="Search..."
-        //                value={query}
-        //                onChange={(e) => setQuery(e.target.value)}/>
-        //         {/*<button className="bg-blue-500 text-white px-4 py-2 rounded-full">Search</button>*/}
-        //         <img
-        //             src="https://media.geeksforgeeks.org/wp-content/uploads/20240226181137/zoom-lens.png"
-        //             alt="Search Icon"
-        //             className="w-6 mx-4"
-        //         />
-        //         <img
-        //             src="https://media.geeksforgeeks.org/wp-content/uploads/20240226181310/mic.png"
-        //             alt="Google Mic"
-        //             className="w-6 mx-4"
-        //         />
-        //     </form>
-        //
-        // </div>
     );
 }
 

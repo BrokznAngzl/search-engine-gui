@@ -1,21 +1,42 @@
 import ElgoogLogo from "../../../ElgoogLogo.png";
 import SearchComp from "./SearchComp";
+import {useState} from "react";
+import TabComp from "./TabComp";
 
 const HeaderComp = ({queryInput}) => {
-    return (
-        <header className="bg-white shadow-md">
-            <div className="container mx-auto pt-4 pb-4 flex items-center">
-                <img onClick={() => {
-                    window.location.href = '/'
-                }} className="w-36 cursor-pointer"
-                     src={ElgoogLogo} alt="ElgoogLogo"/>
+    const [activeTab, setActiveTab] = useState('all');
 
-                <SearchComp queryInput={queryInput}/>
+    const handleClick = (tab) => {
+        setActiveTab(tab);
+    };
+
+    return (
+        <header className="bg-white shadow-md justify-center items-center">
+            <div className="flex justify-center items-center">
+                <div className="mx-1">
+                    <img onClick={() => {
+                        window.location.href = '/'
+                    }} className="w-36 cursor-pointer"
+                         src={ElgoogLogo} alt="ElgoogLogo"/>
+                </div>
+                <div className="container pt-4 pb-4 flex items-center">
+                    <SearchComp queryInput={queryInput}/>
+                </div>
             </div>
-            <div className="container ml-48 my-1 py-2 flex">
-                <p className="px-2 cursor-pointer text-gray-700 text-sm">all</p>
-                <p className="px-2 cursor-pointer text-gray-700 text-sm">image</p>
+
+            <div className="flex justify-center items-center">
+                <div className="mx-1">
+                    <div className="w-36 cursor-pointer">
+                    </div>
+                </div>
+                <div className="container flex items-center ml-2">
+                    <TabComp tabName="all" activeTab={activeTab} handleClick={handleClick} />
+                    <TabComp tabName="Images" activeTab={activeTab} handleClick={handleClick} />
+                    <TabComp tabName="Shopping" activeTab={activeTab} handleClick={handleClick} />
+                    <TabComp tabName="new" activeTab={activeTab} handleClick={handleClick} />
+                </div>
             </div>
+
         </header>
     )
 
