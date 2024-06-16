@@ -19,7 +19,7 @@ const HeaderComp = ({queryInput}) => {
                     }} className="w-36 cursor-pointer"
                          src={ElgoogLogo} alt="ElgoogLogo"/>
                 </div>
-                <div className="container pt-4 pb-4 flex items-center">
+                <div className="container py-4 flex items-center">
                     <SearchComp queryInput={queryInput}/>
                 </div>
             </div>
