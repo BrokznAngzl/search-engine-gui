@@ -38,22 +38,33 @@ const SearchResultPage = () => {
     }, []);
 
     return (
-        <div className="bg-gray-100 min-h-screen">
+        <div className="min-h-screen">
             <HeaderComp queryInput={qParam}/>
             <main className="container mx-auto p-4">
-                <div className="bg-white shadow-md p-6 rounded-lg">
+                <div className="bg-white   pl-16 rounded-lg">
                     {/* Display search results */}
                     {error && <p className="text-red-500">{error}</p>}
                     <ul>
                         {data.map((item, index) => (
-                            <li key={index} className="border-b border-gray-200 py-4">
-                                <div className="cursor-pointer mx-auto" onClick={()=>{window.location.href = item.link}}>
-                                    <img src={item.icon} alt={item.title} className="w-6 h-6 rounded-full shadow-md"/>
-                                    <a href={item.link} className="text-blue-600">{item.title}</a>
-                                    <a href={item.link}
-                                       className="block text-sm text-green-600 hover:underline">{item.link}</a>
+                            <li key={index} className="py-4">
+                                <div className="max-w-md">
+                                    <div className="cursor-pointer mx-auto" onClick={() => {
+                                        window.location.href = item.link
+                                    }}>
+                                        <div className="flex items-center mb-2">
+                                            <img src={item.icon} alt={item.title}
+                                                 className="w-6 h-6 rounded-full shadow-md"/>
+                                            <div className="mx-4">
+                                                <p className="text-xs">{new URL(item.link).hostname}</p>
+                                                <p className="text-xs">{new URL(item.link).origin}</p>
+                                            </div>
+                                        </div>
+
+                                        <a href={item.link} className="text-blue-600">{item.title}</a>
+                                        {/*<a href={item.link} className="block text-sm text-green-600 hover:underline">{item.link}</a>*/}
+                                    </div>
+                                    <p className="text-gray-700 text-xs">{item.description}</p>
                                 </div>
-                                <p className="text-gray-700">{item.description}</p>
                             </li>
                         ))}
                     </ul>
