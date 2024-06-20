@@ -8,7 +8,9 @@ const SearchComp = ({queryInput}) => {
     const [query, setQuery] = useState('')
     const hanndleSubmit = (e) => {
         e.preventDefault();
-        window.location.href = "/search?q=" + encodeURIComponent(query);
+        if (query !== '') {
+            window.location.href = "/search?q=" + encodeURIComponent(query);
+        }
     }
 
     return (

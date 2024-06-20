@@ -7,6 +7,7 @@ import parse from 'html-react-parser';
 
 const SearchResultPage = () => {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const location = useLocation();
@@ -15,7 +16,7 @@ const SearchResultPage = () => {
 
     const client = axios.create({
         baseURL: 'https://search-engine-api-lwfl.onrender.com/',
-        timeout: 20000,
+        timeout: 16000,
     });
 
     const getData = async () => {
@@ -27,10 +28,12 @@ const SearchResultPage = () => {
             });
 
             setData(response.data.data);
+            setLoading(false)
             // console.log(response.data.data)
         } catch (error) {
             setError('There was an error fetching the search results.');
             console.error('Error fetching search results:', error);
+            setLoading(false)
         }
     };
 
@@ -45,6 +48,7 @@ const SearchResultPage = () => {
                 <div className="bg-white   pl-16 rounded-lg">
 
                     {/* Display search results */}
+                    {loading && <p className="text-black text-xs">loading data...</p>}
                     {error && <p className="text-red-500">{error}</p>}
                     <ul>
                         {data && data.map((item, index) => {
