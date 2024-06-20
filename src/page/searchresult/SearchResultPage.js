@@ -16,7 +16,7 @@ const SearchResultPage = () => {
 
     const client = axios.create({
         baseURL: 'https://search-engine-api-lwfl.onrender.com/',
-        timeout: 16000,
+        timeout: 90000,
     });
 
     const getData = async () => {
