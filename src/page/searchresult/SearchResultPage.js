@@ -15,8 +15,9 @@ const SearchResultPage = () => {
     const qParam = searchParams.get('q');
 
     const client = axios.create({
-        baseURL: 'https://search-engine-api-lwfl.onrender.com/',
-        timeout: 90000,
+        // baseURL: 'https://search-engine-api-lwfl.onrender.com/',
+        baseURL: 'https://elgoog.pythonanywhere.com/',
+        timeout: 30000,
     });
 
     const getData = async () => {
