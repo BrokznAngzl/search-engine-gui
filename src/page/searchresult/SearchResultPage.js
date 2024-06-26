@@ -17,7 +17,7 @@ const SearchResultPage = () => {
     const client = axios.create({
         // baseURL: 'https://search-engine-api-lwfl.onrender.com/',
         baseURL: 'https://elgoog.pythonanywhere.com/',
-        timeout: 30000;
+        timeout: 30000,
     });
 
     const getData = async () => {
