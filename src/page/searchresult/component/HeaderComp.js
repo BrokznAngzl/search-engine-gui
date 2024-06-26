@@ -30,10 +30,10 @@ const HeaderComp = ({queryInput}) => {
                     </div>
                 </div>
                 <div className="container flex items-center ml-2">
-                    <TabComp tabName="all" activeTab={activeTab} handleClick={handleClick} />
+                    <TabComp tabName="All" activeTab={activeTab} handleClick={handleClick} />
                     <TabComp tabName="Images" activeTab={activeTab} handleClick={handleClick} />
                     <TabComp tabName="Shopping" activeTab={activeTab} handleClick={handleClick} />
-                    <TabComp tabName="new" activeTab={activeTab} handleClick={handleClick} />
+                    <TabComp tabName="News" activeTab={activeTab} handleClick={handleClick} />
                 </div>
             </div>
 
