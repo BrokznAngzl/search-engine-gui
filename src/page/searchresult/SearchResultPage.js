@@ -17,7 +17,7 @@ const SearchResultPage = () => {
     const client = axios.create({
         // baseURL: 'https://search-engine-api-lwfl.onrender.com/',
         baseURL: 'https://elgoog.pythonanywhere.com/',
-        timeout: 30000,
+        timeout: 120000,
     });
 
     const getData = async () => {
@@ -49,7 +49,7 @@ const SearchResultPage = () => {
                 <div className="bg-white   pl-16 rounded-lg">
 
                     {/* Display search results */}
-                    {loading && <p className="text-black text-xs">loading data...</p>}
+                    {loading && <p className="text-black text-xs">loading data... ( This may take longer on the first request )</p>}
                     {error && <p className="text-red-500">{error}</p>}
                     <ul>
                         {data && data.map((item, index) => {
